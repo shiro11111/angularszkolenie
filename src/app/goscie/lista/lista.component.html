@@ -1,0 +1,19 @@
+<ng-container *ngIf="!pending">
+  <ul *ngIf="data?.length > 0; else empty">
+    <ng-container *ngFor="let gosc of data">
+      <li *ngIf="gosc !== 'Olek'">
+        {{ gosc }}
+      </li>
+    </ng-container>
+  </ul>
+</ng-container>
+
+<button (click)="reloadList()">
+  Dej dane
+</button>
+
+<ng-template #empty>
+  Nikogo ni ma
+</ng-template>
+
+<!--<pre>{{ data | async | json }}</pre>-->

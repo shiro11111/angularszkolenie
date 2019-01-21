@@ -1,0 +1,72 @@
+<!--<pre>{{form.value | json}}</pre>-->
+<!--<pre>{{form.valid | json}}</pre>-->
+<!--<pre>{{form.errors | json}}</pre>-->
+
+<form [formGroup]="form" (submit)="form.valid && onSubmit()">
+
+  <div>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input matInput [formControlName]="'name'" required>
+      <mat-error *ngIf="form.get('name').errors?.required">You must enter a value</mat-error>
+      <!--<mat-error *ngIf="form.get('name').errors?.pattern">Only letters</mat-error>-->
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>Surname</mat-label>
+      <input matInput [formControlName]="'surname'" required>
+      <mat-error *ngIf="form.get('surname').errors?.required">You must enter a value</mat-error>
+      <!--<mat-error *ngIf="form.get('surname').errors?.pattern">Only letters</mat-error>-->
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput [formControlName]="'email'" required appValidateEmail>
+      <!--<mat-error *ngIf="form.get('email').invalid">{{getEmailErrorMessage}}</mat-error>-->
+      <mat-error *ngIf="form.get('email').invalid">Invalid email</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>Pesel</mat-label>
+      <input matInput [formControlName]="'pesel'" required appValidatePesel>
+      <mat-error *ngIf="form.get('pesel').invalid">{{getPeselErrorMessage()}}</mat-error>
+      <!--<mat-error *ngIf="form.get('pesel').errors?.pattern">Only numbers!</mat-error>-->
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field>
+      <mat-label>Birth date</mat-label>
+      <input matInput [matDatepicker]="birthDatePicker" [formControlName]="'birthDate'">
+      <mat-datepicker-toggle matSuffix [for]="birthDatePicker"></mat-datepicker-toggle>
+      <mat-datepicker #birthDatePicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <div class="mat-label">Sex</div>
+    <mat-radio-group [formControlName]="'sex'">
+      <div>
+        <mat-radio-button [value]="'M'">Male</mat-radio-button>
+      </div>
+      <div>
+        <mat-radio-button [value]="'F'">Female</mat-radio-button>
+      </div>
+    </mat-radio-group>
+  </div>
+
+  <div>
+    <mat-checkbox appValidTrue [formControlName]="'rodo'">Zapoznałem się z czymś</mat-checkbox>
+  </div>
+
+  <button mat-raised-button color="primary"
+          [disabled]="form.invalid">Save</button>
+</form>
+
+<!--<pre>{{form.get('name')?.errors | json}}</pre>-->

@@ -1,0 +1,18 @@
+<mat-card class="app-card">
+  <mat-list role="list">
+    <ng-container *ngFor="let item of data">
+      <mat-list-item *ngIf="item" (click)="onUserClick(item?.id)">
+        {{ item?.name }}
+      </mat-list-item>
+    </ng-container>
+  </mat-list>
+</mat-card>
+
+<button mat-raised-button color="primary" (click)="authService.setAdmin()">Chcę być adminem</button>
+
+<router-outlet></router-outlet>
+<!--<app-szczegoly-uzytkownika-->
+  <!--*ngIf="selectedUserId"-->
+  <!--[id]="selectedUserId"-->
+  <!--(textEntered)="onTextEntered($event)"-->
+<!--&gt;</app-szczegoly-uzytkownika>-->

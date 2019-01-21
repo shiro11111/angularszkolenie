@@ -1,0 +1,17 @@
+<div matDialogTitle>
+  <div style="text-align: right;">
+    <button mat-icon-button mat-dialog-close><mat-icon>close</mat-icon></button>
+  </div>
+</div>
+
+<mat-dialog-content>
+  <pre>{{data | json}}</pre>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+  <button mat-raised-button color="warn" (click)="onRemove()">
+    <mat-icon>delete</mat-icon> Usuń
+  </button>
+
+</mat-dialog-actions>

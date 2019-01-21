@@ -1,0 +1,6 @@
+<pre>{{id | json}}</pre>
+<pre>{{data | json}}</pre>
+<pre>{{text | json}}</pre>
+
+<input [(ngModel)]="text"
+       (keyup.enter)="text && textEntered.emit(text)" />
